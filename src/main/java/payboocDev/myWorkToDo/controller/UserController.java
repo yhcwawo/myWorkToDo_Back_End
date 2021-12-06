@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(originPatterns = "*", allowedHeaders = "*", allowCredentials="true")
 public class UserController {
 
     @Autowired
