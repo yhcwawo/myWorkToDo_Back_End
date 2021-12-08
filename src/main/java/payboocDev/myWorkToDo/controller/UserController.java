@@ -15,9 +15,9 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
-    @GetMapping("/{id}")
-    public User getUserProfile(@PathVariable("id") int id) {
-        return userMapper.getUserProfile(id);
+    @GetMapping("/{user_id}")
+    public User getUserProfile(@PathVariable("user_id") int user_id) {
+        return userMapper.getUserProfile(user_id);
     }
 
     @GetMapping("/all")
@@ -25,19 +25,19 @@ public class UserController {
         return userMapper.getUserProfileList();
     }
 
-    @PutMapping("/{id}")
-    public void putUserProfile(@PathVariable("id") int id, @RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("address") String address) {
-        userMapper.updateUserProfile(id, name, email, address);
+    @PutMapping("/{user_id}")
+    public void putUserProfile(@PathVariable("user_id") int user_id, @RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("team") String team, @RequestParam("password") String password) {
+        userMapper.updateUserProfile(user_id, name, email, team, password);
     }
 
     @PostMapping("/post")
-    public void postUserProfile(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("address") String address) {
-        userMapper.insertUserProfile(name, email, address);
+    public void postUserProfile(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("team") String team, @RequestParam("password") String password) {
+        userMapper.insertUserProfile(name, email, team, password);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUserProfile(@PathVariable("id") int id) {
-        userMapper.deleteUserProfile(id);
+    @DeleteMapping("/{user_id}")
+    public void deleteUserProfile(@PathVariable("user_id") int user_id) {
+        userMapper.deleteUserProfile(user_id);
     }
 
 

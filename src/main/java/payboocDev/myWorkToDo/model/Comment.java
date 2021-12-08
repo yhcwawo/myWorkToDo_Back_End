@@ -9,15 +9,13 @@ import lombok.ToString;
 @Setter
 @ToString
 @Data
-public class Task {
+public class Comment {
 
-    private int task_id;
-    private String task_name;
-    private String task_to_date;
+    private int comment_id;
+    private String payload;
     private String created_date;
-    private int user_id;
-    private String step;
-    private int task_index;
+    private String user_id;
     private String user_name;
+
 
 }

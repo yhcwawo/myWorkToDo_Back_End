@@ -11,20 +11,25 @@ public interface WorkMapper {
     @Select("SELECT * FROM WTD_WORK WHERE user_id=#{id}")
     Work getWorkList(@Param("id") int id);
 
-    @Select("SELECT * FROM WTD_WORK WHERE id=#{id}")
-    Work getWorkDetail(@Param("id") int id);
+    //get recent weekly work list
+    @Select("SELECT * FROM WTD_WORK WHERE user_id=#{user_id}")
+    Work getWorkDetail(@Param("user_id") int user_id);
+
+    //get all my work list (for work detail link)
 
     @Select("SELECT * FROM WTD_WORK")
     List<Work> getWorkAllList();
 
-    @Insert("INSERT INTO WTD_WORK(name,email,address) VALUES(#{name}, #{email}, #{address})")
-    int insertWork(@Param("name") String name, @Param("email") String email, @Param("address") String address);
+    //insert work
+    @Insert("INSERT INTO WTD_WORK(name,group_name,user_id,auth,group_number,group_master,team_name,created_date,to_date ) VALUES(#{name}, #{group_name}, #{user_id},#{auth},#{group_number},#{group_master},#{team_name},NOW(), #{to_date})")
+    int insertWork(@Param("name") String name, @Param("group_name") String group_name, @Param("user_id") String user_id,@Param("auth") String auth,@Param("group_number") String group_number,@Param("group_master") String group_master,@Param("team_name") String team_name,@Param("to_date") String to_date);
 
     @Update("UPDATE WTD_WORK SET name=#{name}, email=#{email}, address=#{address} WHERE id=#{id}")
     int updateWork(@Param("id") int id, @Param("name") String name, @Param("email") String email, @Param("address") String address);
 
-    @Delete("DELETE FROM WTD_WORK WHERE id=#{id}")
-    int deleteWork(@Param("id") int id);
+    //delete work
+    @Delete("DELETE FROM WTD_WORK WHERE work_id=#{work_id}")
+    int deleteWork(@Param("work_id") int work_id);
 
 
 }
