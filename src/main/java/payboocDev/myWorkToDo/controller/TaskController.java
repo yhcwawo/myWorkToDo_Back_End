@@ -16,13 +16,18 @@ public class TaskController {
     @Autowired
     private TaskMapper taskMapper;
 
-    @GetMapping("/{id}")
-    public Task getWorkList(@PathVariable("id") int id) {
-        return taskMapper.getTaskList(id);
+    @GetMapping("/{work_id}")
+    public Task getWorkList(@PathVariable("work_id") int work_id) {
+        return taskMapper.getTaskList(work_id);
     }
 
     @GetMapping("/all")
     public List<Task> getUserProfileList() {
         return taskMapper.getAllTaskList();
+    }
+
+    @DeleteMapping("/{task_id}")
+    public void deleteWork(@PathVariable("task_id") int task_id) {
+        taskMapper.deleteTask(task_id);
     }
 }

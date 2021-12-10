@@ -24,4 +24,9 @@ public class GroupController {
     public List<Group> getUserProfileList() {
         return groupMapper.getAllGroupList();
     }
+
+    @DeleteMapping("/{group_member}")
+    public void deleteGroupMember(@PathVariable("group_member") int group_member) {
+        groupMapper.deleteGroupMember(group_member);
+    }
 }

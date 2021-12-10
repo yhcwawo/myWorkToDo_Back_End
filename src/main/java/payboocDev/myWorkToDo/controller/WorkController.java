@@ -16,15 +16,20 @@ public class WorkController {
     @Autowired
     private WorkMapper workMapper;
 
-    @GetMapping("/{id}")
-    public Work getWorkList(@PathVariable("id") int id) {
-        return workMapper.getWorkList(id);
+    //get all my work list
+    @GetMapping("/workList/{user_id}")
+    public Work getAllMyWorkList(@PathVariable("user_id") int user_id) {
+
+        return workMapper.getAllMyWorkList(user_id);
     }
 
-    @GetMapping("/all")
-    public List<Work> getWorkAllList() {
-        return workMapper.getWorkAllList();
+    //get recent my work list
+    @GetMapping("/recent/{user_id}")
+    public Work getRecentWorkList(@PathVariable("user_id") int user_id) {
+
+        return workMapper.getRecentWorkList(user_id);
     }
+
 
     @PutMapping("/{id}")
     public void updateWork(@PathVariable("id") int id, @RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("address") String address) {
@@ -35,9 +40,9 @@ public class WorkController {
     public void insertWork(@RequestParam("name") String name, @RequestParam("group_name") String group_name,
                            @RequestParam("user_id") String user_id, @RequestParam("auth") String auth,
                            @RequestParam("group_number") String group_number, @RequestParam("group_master") String group_master,
-                           @RequestParam("team_name") String team_name, @RequestParam("to_date") String to_date ) {
+        @RequestParam("team_name") String team_name, @RequestParam("to_date") String to_date ) {
 
-        workMapper.insertWork(name, group_name, user_id,auth,group_number,group_master, team_name,to_date);
+            workMapper.insertWork(name, group_name, user_id,auth,group_number,group_master, team_name,to_date);
     }
 
     @DeleteMapping("/{id}")

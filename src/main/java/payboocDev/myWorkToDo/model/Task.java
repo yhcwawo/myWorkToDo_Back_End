@@ -16,6 +16,7 @@ public class Task {
     private String task_to_date;
     private String created_date;
     private int user_id;
+    private int work_id;
     private String step;
     private int task_index;
     private String user_name;
