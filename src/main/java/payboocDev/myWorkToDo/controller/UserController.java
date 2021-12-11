@@ -31,8 +31,8 @@ public class UserController {
     }
 
     @PostMapping("/post")
-    public void postUserProfile(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("team") String team, @RequestParam("password") String password) {
-        userMapper.insertUserProfile(name, email, team, password);
+    public void postUserProfile(@RequestParam("name") String name, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("team") String team) {
+        userMapper.insertUserProfile(name, password, email, team );
     }
 
     @DeleteMapping("/{user_id}")

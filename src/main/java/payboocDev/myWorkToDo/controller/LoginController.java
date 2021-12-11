@@ -13,7 +13,7 @@ public class LoginController {
     @Autowired
     private LoginMapper loginMapper;
 
-    @GetMapping("/login")
+    @GetMapping("/verify")
     public User getLogins(@PathVariable("name") String name,@PathVariable("password") String password) {
 
         return loginMapper.getLoginAuth(name,password);

@@ -15,7 +15,7 @@ public interface UserMapper {
     List<User> getUserProfileList();
 
     @Insert("INSERT INTO WTD_USER(name,password,team, email, created_date) VALUES(#{name}, #{password}, #{team}, #{email}, now())")
-    int insertUserProfile(@Param("name") String name, @Param("email") String email, @Param("password") String password, @Param("team") String team);
+    int insertUserProfile(@Param("name") String name, @Param("password") String password, @Param("email") String email,@Param("team") String team   );
 
     @Update("UPDATE WTD_USER SET name=#{name}, email=#{email}, team=#{team} , password=#{password} WHERE user_id=#{user_id}")
     int updateUserProfile(@Param("user_id") int user_id, @Param("name") String name, @Param("email") String email, @Param("team") String team, @Param("password") String password);

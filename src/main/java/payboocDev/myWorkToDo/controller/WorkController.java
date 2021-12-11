@@ -38,8 +38,8 @@ public class WorkController {
 
     @PostMapping("/post")
     public void insertWork(@RequestParam("name") String name, @RequestParam("group_name") String group_name,
-                           @RequestParam("user_id") String user_id, @RequestParam("auth") String auth,
-                           @RequestParam("group_number") String group_number, @RequestParam("group_master") String group_master,
+                           @RequestParam("user_id") int user_id, @RequestParam("auth") String auth,
+                           @RequestParam("group_number") int group_number, @RequestParam("group_master") String group_master,
         @RequestParam("team_name") String team_name, @RequestParam("to_date") String to_date ) {
 
             workMapper.insertWork(name, group_name, user_id,auth,group_number,group_master, team_name,to_date);

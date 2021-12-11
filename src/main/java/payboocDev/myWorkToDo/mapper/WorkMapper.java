@@ -28,7 +28,7 @@ public interface WorkMapper {
 
     //insert work
     @Insert("INSERT INTO WTD_WORK(name,group_name,user_id,auth,group_number,group_master,team_name,created_date,to_date ) VALUES(#{name}, #{group_name}, #{user_id},#{auth},#{group_number},#{group_master},#{team_name},NOW(), #{to_date})")
-    int insertWork(@Param("name") String name, @Param("group_name") String group_name, @Param("user_id") String user_id, @Param("auth") String auth, @Param("group_number") String group_number, @Param("group_master") String group_master, @Param("team_name") String team_name, @Param("to_date") String to_date);
+    int insertWork(@Param("name") String name, @Param("group_name") String group_name, @Param("user_id") int user_id, @Param("auth") String auth, @Param("group_number") int group_number, @Param("group_master") String group_master, @Param("team_name") String team_name, @Param("to_date") String to_date);
 
     @Update("UPDATE WTD_WORK SET name=#{name}, email=#{email}, address=#{address} WHERE id=#{id}")
     int updateWork(@Param("id") int id, @Param("name") String name, @Param("email") String email, @Param("address") String address);
