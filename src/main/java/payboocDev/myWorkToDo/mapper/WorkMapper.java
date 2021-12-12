@@ -1,6 +1,7 @@
 package payboocDev.myWorkToDo.mapper;
 
 import org.apache.ibatis.annotations.*;
+import payboocDev.myWorkToDo.model.User;
 import payboocDev.myWorkToDo.model.Work;
 
 import java.util.List;
@@ -14,17 +15,16 @@ public interface WorkMapper {
     //get recent weekly work list
     @Select("SELECT work_id, name, group_name, user_id, auth, group_number, group_master, team_name, created_date, to_date\n" +
             "FROM wtd_work\n" +
-            "WHERE work_id = (select group_work_id from wtd_group where group_member = #{user_id})\n" +
+            "WHERE work_id IN (select group_work_id from wtd_group where group_member = #{user_id})\n" +
             "LIMIT 5;")
-    Work getRecentWorkList(@Param("user_id") int user_id);
+    List<Work> getRecentWorkList(@Param("user_id") int user_id);
 
 
     //get all my work list (for work detail link)
-    @Select("SELECT work_id, name, group_name, user_id, auth, group_number, group_master, team_name, created_date, to_date\n" +
+    @Select("SELECT work_id as id, name, group_name, user_id, auth, group_number, group_master, team_name, created_date, to_date\n" +
             "FROM wtd_work\n" +
-            "WHERE work_id = (select group_work_id from wtd_group where group_member = #{user_id})")
-    Work getAllMyWorkList(@Param("user_id") int user_id);
-
+            "WHERE work_id IN (select group_work_id from wtd_group where group_member = #{user_id})")
+    List<Work> getAllMyWorkList(@Param("user_id") int user_id);
 
     //insert work
     @Insert("INSERT INTO WTD_WORK(name,group_name,user_id,auth,group_number,group_master,team_name,created_date,to_date ) VALUES(#{name}, #{group_name}, #{user_id},#{auth},#{group_number},#{group_master},#{team_name},NOW(), #{to_date})")

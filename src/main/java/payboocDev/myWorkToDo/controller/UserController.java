@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import payboocDev.myWorkToDo.mapper.UserMapper;
 import payboocDev.myWorkToDo.model.User;
+import payboocDev.myWorkToDo.model.Work;
 
 import java.util.List;
 
@@ -18,6 +19,11 @@ public class UserController {
     @GetMapping("/{user_id}")
     public User getUserProfile(@PathVariable("user_id") int user_id) {
         return userMapper.getUserProfile(user_id);
+    }
+
+    @GetMapping("/login")
+    public User getLoginUserAuth(@PathVariable("name") String name, @PathVariable("password") String password) {
+        return userMapper.getLoginUserAuth(name, password);
     }
 
     @GetMapping("/all")

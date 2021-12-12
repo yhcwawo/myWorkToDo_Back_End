@@ -12,6 +12,7 @@ import lombok.ToString;
 public class Work {
 
     private int work_id;
+    private int id;
     private String name;
     private String group_name;
     private int user_id;

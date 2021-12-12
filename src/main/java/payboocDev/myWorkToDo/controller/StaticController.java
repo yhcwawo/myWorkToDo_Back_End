@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import payboocDev.myWorkToDo.mapper.StaticMapper;
 import payboocDev.myWorkToDo.model.Task;
+import payboocDev.myWorkToDo.model.Work;
 
 import java.util.List;
 
@@ -15,16 +16,19 @@ public class StaticController {
     @Autowired
     private StaticMapper staticMapper;
 
-    @GetMapping("/{id}")
-    public Task getWorkList(@PathVariable("id") int id) {
 
-        return staticMapper.getTaskStaticList(id);
+    //main summary static query
+    @GetMapping("/main")
+    public Task getTaskStaticList(@PathVariable("user_id") int user_id) {
+
+        return staticMapper.getTaskStaticList(user_id);
     }
 
-    @GetMapping("/all")
-    public List<Task> getUserProfileList() {
 
-        return staticMapper.getAllTaskStaticList();
+    //get all my Group static
+    @GetMapping("/group")
+    public List<Task> getAllMyWorkList(@PathVariable("user_id") int user_id) {
+        return staticMapper.getAllTaskStaticList(user_id);
     }
 
 

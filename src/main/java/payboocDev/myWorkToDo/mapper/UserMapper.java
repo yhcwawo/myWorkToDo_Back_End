@@ -8,8 +8,11 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT * FROM WTD_USER WHERE user_id=#{user_id}")
+    @Select("SELECT user_id, name, team, email, created_date FROM WTD_USER WHERE user_id=#{user_id}")
     User getUserProfile(@Param("user_id") int user_id);
+
+    @Select("SELECT * FROM WTD_USER WHERE name=#{name}, password=#{password}")
+    User getLoginUserAuth(@Param("name") String name,@Param("password") String password);
 
     @Select("SELECT * FROM WTD_USER")
     List<User> getUserProfileList();

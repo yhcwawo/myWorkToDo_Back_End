@@ -1,5 +1,6 @@
 package payboocDev.myWorkToDo.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import payboocDev.myWorkToDo.mapper.GroupMapper;
@@ -16,13 +17,32 @@ public class GroupController {
     private GroupMapper groupMapper;
 
     @GetMapping("/{id}")
-    public Group getWorkList(@PathVariable("id") int id) {
+    public Group getGroupList(@PathVariable("id") int id) {
         return groupMapper.getGroupList(id);
     }
 
-    @GetMapping("/all")
-    public List<Group> getUserProfileList() {
-        return groupMapper.getAllGroupList();
+    //group page double query
+    @GetMapping("/list")
+    public List<Group> getAllGroupList(@PathVariable("group_member") int group_member) {
+        return groupMapper.getAllGroupList(group_member);
+    }
+
+    //insert first
+    @PostMapping("/post/master")
+    public void insertGroupMaster(@RequestParam("group_name") String group_name, @RequestParam("auth") String auth,
+                           @RequestParam("group_master") String group_master, @RequestParam("group_member") String group_member,
+                           @RequestParam("group_work_id") String group_work_id) {
+
+        groupMapper.insertGroupMaster(group_name, auth, group_master, group_member, group_work_id);
+    }
+
+    //insert first
+    @PostMapping("/post/member")
+    public void insertGroupMember(@RequestParam("group_name") String group_name, @RequestParam("auth") String auth,
+                           @RequestParam("group_master") String group_master, @RequestParam("group_member") String group_member,
+                           @RequestParam("group_work_id") String group_work_id) {
+
+        groupMapper.insertGroupMember(group_name, auth, group_master, group_member, group_work_id);
     }
 
     @DeleteMapping("/{group_member}")

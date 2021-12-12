@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import payboocDev.myWorkToDo.mapper.WorkMapper;
+import payboocDev.myWorkToDo.model.User;
 import payboocDev.myWorkToDo.model.Work;
 
 import java.util.List;
@@ -18,14 +19,13 @@ public class WorkController {
 
     //get all my work list
     @GetMapping("/workList/{user_id}")
-    public Work getAllMyWorkList(@PathVariable("user_id") int user_id) {
-
+    public List<Work> getAllMyWorkList(@PathVariable("user_id") int user_id) {
         return workMapper.getAllMyWorkList(user_id);
     }
 
     //get recent my work list
     @GetMapping("/recent/{user_id}")
-    public Work getRecentWorkList(@PathVariable("user_id") int user_id) {
+    public List<Work> getRecentWorkList(@PathVariable("user_id") int user_id) {
 
         return workMapper.getRecentWorkList(user_id);
     }

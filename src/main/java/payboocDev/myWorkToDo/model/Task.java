@@ -20,5 +20,7 @@ public class Task {
     private String step;
     private int task_index;
     private String user_name;
+    private String completedYn;
+
 
 }
