@@ -11,9 +11,9 @@ public interface GroupMapper {
     @Select("SELECT * FROM WTD_GROUP WHERE id=#{id}")
     Group getGroupList(@Param("id") int id);
 
-    @Select("SELECT group_id, group_name, auth, group_master, group_member, group_work_id\n" +
+    @Select("SELECT group_id, group_name, auth, group_master, group_member\n" +
             "FROM wtd_group\n" +
-            "where group_member = #{group_member}\n")
+            "where group_member = #{group_member}")
     List<Group> getAllGroupList(@Param("group_member") int group_member);
 
     //insert group master at first

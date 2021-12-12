@@ -22,7 +22,7 @@ public class GroupController {
     }
 
     //group page double query
-    @GetMapping("/list")
+    @GetMapping("/list/{group_member}")
     public List<Group> getAllGroupList(@PathVariable("group_member") int group_member) {
         return groupMapper.getAllGroupList(group_member);
     }

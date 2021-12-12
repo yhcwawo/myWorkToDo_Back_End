@@ -18,5 +18,4 @@ public class Group {
     private String auth;
     private String group_master;
 
-
 }

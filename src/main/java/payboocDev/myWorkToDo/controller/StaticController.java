@@ -18,7 +18,7 @@ public class StaticController {
 
 
     //main summary static query
-    @GetMapping("/main")
+    @GetMapping("/main/{user_id}")
     public Task getTaskStaticList(@PathVariable("user_id") int user_id) {
 
         return staticMapper.getTaskStaticList(user_id);
@@ -26,7 +26,7 @@ public class StaticController {
 
 
     //get all my Group static
-    @GetMapping("/group")
+    @GetMapping("/group/{user_id}")
     public List<Task> getAllMyWorkList(@PathVariable("user_id") int user_id) {
         return staticMapper.getAllTaskStaticList(user_id);
     }
