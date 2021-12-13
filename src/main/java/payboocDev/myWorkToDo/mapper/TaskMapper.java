@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface TaskMapper {
 
-    @Select("SELECT task_id, task_name, task_to_date, created_date, user_id, step, task_index, user_name, work_id, completedYn FROM WTD_TASK WHERE work_id=#{work_id}")
+    @Select("SELECT task_id, task_name, task_to_date, date_format(created_date, '%Y-%m-%d')as created_date, user_id, step, task_index, user_name, work_id, completedYn FROM WTD_TASK WHERE work_id=#{work_id}")
     List<Task> getTaskList(@Param("work_id") int work_id);
 
     //insert task

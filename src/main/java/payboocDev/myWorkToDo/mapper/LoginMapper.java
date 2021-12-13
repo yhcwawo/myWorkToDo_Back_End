@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface LoginMapper {
 
-    @Select("SELECT TRUE FROM WTD_USER WHERE name=#{name},  password=#{password}")
+    @Select("SELECT user_id FROM WTD_USER WHERE name=#{name} AND password=#{password}")
     User getLoginAuth(@Param("name") String name,@Param("password") String password);
 
     @Select("SELECT FALSE FROM WTD_USER")

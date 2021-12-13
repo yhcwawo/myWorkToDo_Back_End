@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT user_id, name, team, email, created_date FROM WTD_USER WHERE user_id=#{user_id}")
+    @Select("SELECT user_id, name, team, email, date_format(created_date, '%Y-%m-%d')as created_date FROM WTD_USER WHERE user_id=#{user_id}")
     User getUserProfile(@Param("user_id") int user_id);
 
     @Select("SELECT * FROM WTD_USER WHERE name=#{name}, password=#{password}")

@@ -11,9 +11,13 @@ public interface GroupMapper {
     @Select("SELECT * FROM WTD_GROUP WHERE id=#{id}")
     Group getGroupList(@Param("id") int id);
 
-    @Select("SELECT group_id, group_name, auth, group_master, group_member\n" +
-            "FROM wtd_group\n" +
-            "where group_member = #{group_member}")
+    @Select("SELECT groupT.group_work_id, groupT.group_id, groupT.group_id as id , groupT.group_name,  groupT.auth , groupT.group_master , groupT.group_member, workT.name,\n" +
+            "date_format(workT.created_date, '%Y-%m-%d') as created_date ,date_format(workT.to_date, '%Y-%m-%d') as to_date\n" +
+            ",(select count(*) as group_number from wtd_group where group_id = groupT.group_id) as group_number\n" +
+            ",(select name from wtd_user where user_id = groupT.group_master ) as group_master_name\n" +
+            ",(select name from wtd_user where user_id = groupT.group_member ) as group_member_name\n" +
+            "FROM wtd_work as workT LEFT JOIN wtd_group as groupT ON workT.work_id = groupT.group_work_id \n" +
+            "where groupT.group_member = #{group_member}")
     List<Group> getAllGroupList(@Param("group_member") int group_member);
 
     //insert group master at first
