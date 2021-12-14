@@ -11,7 +11,7 @@ import java.util.List;
 public interface StaticMapper {
 
     @Select("SELECT * FROM WTD_TASK WHERE user_id=#{user_id}")
-    Task getTaskStaticList(@Param("user_id") int user_id);
+    Task getTaskSummary(@Param("user_id") int user_id);
 
     @Select("SELECT * FROM WTD_TASK WHERE user_id=#{user_id}")
     List<Task> getAllTaskStaticList(@Param("user_id") int user_id);

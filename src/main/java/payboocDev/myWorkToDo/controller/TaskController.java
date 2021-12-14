@@ -30,7 +30,7 @@ public class TaskController {
         taskMapper.insertTask(task_name, task_to_date, user_id, step, task_index, user_name, work_id, completedYn );
     }
 
-    @DeleteMapping("/{task_id}")
+    @DeleteMapping("/delete/{task_id}")
     public void deleteTask(@PathVariable("task_id") int task_id) {
         taskMapper.deleteTask(task_id);
     }

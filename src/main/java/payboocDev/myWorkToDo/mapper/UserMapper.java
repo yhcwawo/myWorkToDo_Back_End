@@ -14,7 +14,7 @@ public interface UserMapper {
     @Select("SELECT * FROM WTD_USER WHERE name=#{name}, password=#{password}")
     User getLoginUserAuth(@Param("name") String name,@Param("password") String password);
 
-    @Select("SELECT * FROM WTD_USER")
+    @Select("SELECT user_id, name FROM WTD_USER")
     List<User> getUserProfileList();
 
     @Insert("INSERT INTO WTD_USER(name,password,team, email, created_date) VALUES(#{name}, #{password}, #{team}, #{email}, now())")

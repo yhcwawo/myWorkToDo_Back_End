@@ -16,12 +16,11 @@ public class StaticController {
     @Autowired
     private StaticMapper staticMapper;
 
-
     //main summary static query
     @GetMapping("/main/{user_id}")
-    public Task getTaskStaticList(@PathVariable("user_id") int user_id) {
+    public Task getTaskSummary(@PathVariable("user_id") int user_id) {
 
-        return staticMapper.getTaskStaticList(user_id);
+        return staticMapper.getTaskSummary(user_id);
     }
 
 

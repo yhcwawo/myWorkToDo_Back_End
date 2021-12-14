@@ -26,7 +26,7 @@ public class UserController {
         return userMapper.getLoginUserAuth(name, password);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/name")
     public List<User> getUserProfileList() {
         return userMapper.getUserProfileList();
     }

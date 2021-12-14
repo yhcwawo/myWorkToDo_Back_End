@@ -30,10 +30,9 @@ public class GroupController {
     //insert first
     @PostMapping("/post/master")
     public void insertGroupMaster(@RequestParam("group_name") String group_name, @RequestParam("auth") String auth,
-                           @RequestParam("group_master") String group_master, @RequestParam("group_member") String group_member,
-                           @RequestParam("group_work_id") String group_work_id) {
+                           @RequestParam("group_master") String group_master, @RequestParam("group_member") String group_member) {
 
-        groupMapper.insertGroupMaster(group_name, auth, group_master, group_member, group_work_id);
+        groupMapper.insertGroupMaster(group_name, auth, group_master, group_member);
     }
 
     //insert first
@@ -45,7 +44,7 @@ public class GroupController {
         groupMapper.insertGroupMember(group_name, auth, group_master, group_member, group_work_id);
     }
 
-    @DeleteMapping("/{group_member}")
+    @DeleteMapping("/delete/{group_member}")
     public void deleteGroupMember(@PathVariable("group_member") int group_member) {
         groupMapper.deleteGroupMember(group_member);
     }
