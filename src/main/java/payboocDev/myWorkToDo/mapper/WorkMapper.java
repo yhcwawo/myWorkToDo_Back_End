@@ -13,7 +13,9 @@ public interface WorkMapper {
     Work getWorkList(@Param("id") int id);
 
     //get recent weekly work list
-    @Select("SELECT work_id, name, group_name, user_id, auth, group_number, group_master, team_name, date_format(created_date, '%Y-%m-%d')as created_date, date_format(to_date, '%Y-%m-%d')as to_date\n" +
+    @Select("SELECT work_id, name, group_name, user_id, auth, team_name, date_format(created_date, '%Y-%m-%d')as created_date, date_format(to_date, '%Y-%m-%d')as to_date\n" +
+            ",(select name from wtd_user where user_id = group_master ) as group_master\n" +
+            ",(select count(*) as group_number from wtd_group where group_work_id = wtd_work.work_id) as group_number\n" +
             "FROM wtd_work\n" +
             "WHERE work_id IN (select group_work_id from wtd_group where group_member = #{user_id})\n" +
             "ORDER BY to_date ASC \n"+
@@ -22,7 +24,9 @@ public interface WorkMapper {
 
 
     //get all my work list (for work detail link)
-    @Select("SELECT work_id as id, name, group_name, user_id, auth, group_number, group_master, team_name, date_format(created_date, '%Y-%m-%d')as created_date, date_format(to_date, '%Y-%m-%d')as to_date\n" +
+    @Select("SELECT work_id as id, name, group_name, user_id, auth, group_number, team_name, date_format(created_date, '%Y-%m-%d')as created_date, date_format(to_date, '%Y-%m-%d')as to_date\n" +
+            ",(select name from wtd_user where user_id = group_master ) as group_master\n" +
+            ",(select count(*) as group_number from wtd_group where group_work_id = wtd_work.work_id) as group_number\n" +
             "FROM wtd_work\n" +
             "WHERE work_id IN (select group_work_id from wtd_group where group_member = #{user_id})\n"+
             "ORDER BY to_date ASC")

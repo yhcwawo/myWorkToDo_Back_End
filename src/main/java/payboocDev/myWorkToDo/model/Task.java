@@ -22,5 +22,17 @@ public class Task {
     private String user_name;
     private String completedYn;
 
+    //static part
+    private String daypre4;
+    private String daypre3;
+    private String daypre2;
+    private String daypre1;
+    private String daytoday;
+    private String daypost1;
+    private String daypost2;
+    private String daypost3;
+    private String daypost4;
+    private String name;
+
 
 }
