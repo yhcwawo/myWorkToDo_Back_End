@@ -17,6 +17,12 @@ public class WorkController {
     @Autowired
     private WorkMapper workMapper;
 
+    //work info
+    @GetMapping("/{work_id}")
+    public Work getWorkInfo(@PathVariable("work_id") int work_id) {
+        return workMapper.getWorkInfo(work_id);
+    }
+
     //get all my work list
     @GetMapping("/workList/{user_id}")
     public List<Work> getAllMyWorkList(@PathVariable("user_id") int user_id) {

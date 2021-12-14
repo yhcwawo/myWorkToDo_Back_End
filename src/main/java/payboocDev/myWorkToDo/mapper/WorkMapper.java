@@ -9,8 +9,9 @@ import java.util.List;
 @Mapper
 public interface WorkMapper {
 
-    @Select("SELECT * FROM WTD_WORK WHERE user_id=#{id}")
-    Work getWorkList(@Param("id") int id);
+    //work info
+    @Select("SELECT work_id, name, date_format(to_date, '%Y-%m-%d')as to_date FROM WTD_WORK WHERE work_id=#{work_id}")
+    Work getWorkInfo(@Param("work_id") int work_id);
 
     //get recent weekly work list
     @Select("SELECT work_id, name, group_name, user_id, auth, team_name, date_format(created_date, '%Y-%m-%d')as created_date, date_format(to_date, '%Y-%m-%d')as to_date\n" +
