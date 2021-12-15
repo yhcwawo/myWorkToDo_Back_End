@@ -51,7 +51,6 @@ public class TaskController {
         taskMapper.updateTaskStep(task_id, step);
     }
 
-
     //task delete
     @DeleteMapping("/delete/{task_id}")
     public void deleteTask(@PathVariable("task_id") int task_id) {

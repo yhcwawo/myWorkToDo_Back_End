@@ -19,10 +19,14 @@ public class StaticController {
     //main summary static query
     @GetMapping("/main/{user_id}")
     public Task getTaskSummary(@PathVariable("user_id") int user_id) {
-
         return staticMapper.getTaskSummary(user_id);
     }
 
+    //statistics total summary query
+    @GetMapping("/total/{user_id}")
+    public Task getTaskTotalSummary(@PathVariable("user_id") int user_id) {
+        return staticMapper.getTaskTotalSummary(user_id);
+    }
 
     //get all my Group static
     @GetMapping("/group/{user_id}")

@@ -16,6 +16,14 @@ public interface StaticMapper {
             "where user_id = #{user_id}")
     Task getTaskSummary(@Param("user_id") int user_id);
 
+    @Select("SELECT ((count(task_id) / (select count(task_id) from wtd_task) ) * 100 ) as myTaskRatio\n" +
+            ", ( (select count(task_id) from wtd_task where step = \"완료\") / (select count(task_id) from wtd_task) * 100 )  as allTaskRatio\n" +
+            "FROM wtd_task\n" +
+            "WHERE user_id = #{user_id}" +
+            "and date_format(task_to_date, '%d') >= (date_format(now(), '%d') -4)\n" +
+            "and date_format(task_to_date, '%d') <= (date_format(now(), '%d') +4)")
+    Task getTaskTotalSummary(@Param("user_id") int user_id);
+
     @Select(
             "select (select name from wtd_user where user_id = wtd_task.user_id limit 1) as name,\n" +
             "count(case when date_format(task_to_date, '%d') >= (date_format(now(), '%d') -4 ) then 1 end) as daypre4 \n" +

@@ -37,5 +37,8 @@ public class Task {
     private int complete_number;
     private int todo_number;
     private int stop_number;
+    private int myTaskRatio;
+    private int allTaskRatio;
+
 
 }
