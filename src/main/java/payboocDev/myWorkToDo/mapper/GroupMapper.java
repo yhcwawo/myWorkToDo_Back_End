@@ -17,7 +17,7 @@ public interface GroupMapper {
             ",(select name from wtd_user where user_id = groupT.group_master ) as group_master_name\n" +
             ",(select name from wtd_user where user_id = groupT.group_member ) as group_member_name\n" +
             "FROM wtd_work as workT LEFT JOIN wtd_group as groupT ON workT.work_id = groupT.group_work_id \n" +
-            "where groupT.group_member = #{group_member}")
+            "where groupT.group_member = #{group_member} or groupT.group_master = #{group_member}")
     List<Group> getAllGroupList(@Param("group_member") int group_member);
 
     //insert group master at first
@@ -31,7 +31,7 @@ public interface GroupMapper {
 
     //delete group member
     @Delete("DELETE FROM WTD_GROUP WHERE group_id=#{group_id}")
-    int deleteGroupMember(@Param("group_member") int group_id);
+    int deleteGroupMember(@Param("group_id") int group_id);
 
 
 
