@@ -16,10 +16,10 @@ public interface StaticMapper {
             "where user_id = #{user_id}")
     Task getTaskSummary(@Param("user_id") int user_id);
 
-    @Select("SELECT ((count(task_id) / (select count(task_id) from wtd_task) ) * 100 ) as myTaskRatio\n" +
-            ", ( (select count(task_id) from wtd_task where step = \"완료\") / (select count(task_id) from wtd_task) * 100 )  as allTaskRatio\n" +
-            "FROM wtd_task\n" +
-            "WHERE user_id = #{user_id}" +
+    @Select("SELECT ((count(task_id) / (select count(task_id) from wtd_task) ) * 100 ) as myTaskRatio,\n" +
+            " ( (select count(task_id) from wtd_task where step = '완료') / (select count(task_id) from wtd_task) * 100 ) as allTaskRatio\n" +
+            "FROM wtd_task \n" +
+            "WHERE user_id = #{user_id} \n" +
             "and date_format(task_to_date, '%d') >= (date_format(now(), '%d') -4)\n" +
             "and date_format(task_to_date, '%d') <= (date_format(now(), '%d') +4)")
     Task getTaskTotalSummary(@Param("user_id") int user_id);

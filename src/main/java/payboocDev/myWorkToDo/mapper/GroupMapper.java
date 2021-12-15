@@ -30,8 +30,8 @@ public interface GroupMapper {
 
 
     //delete group member
-    @Delete("DELETE FROM WTD_GROUP WHERE group_member=#{group_member}")
-    int deleteGroupMember(@Param("group_member") int group_member);
+    @Delete("DELETE FROM WTD_GROUP WHERE group_id=#{group_id}")
+    int deleteGroupMember(@Param("group_member") int group_id);
 
 
 

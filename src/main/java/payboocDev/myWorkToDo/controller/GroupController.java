@@ -44,8 +44,8 @@ public class GroupController {
         groupMapper.insertGroupMember(group_name, auth, group_master, group_member, group_work_id);
     }
 
-    @DeleteMapping("/delete/{group_member}")
-    public void deleteGroupMember(@PathVariable("group_member") int group_member) {
-        groupMapper.deleteGroupMember(group_member);
+    @DeleteMapping("/delete/{group_id}")
+    public void deleteGroupMember(@PathVariable("group_id") int group_id) {
+        groupMapper.deleteGroupMember(group_id);
     }
 }
