@@ -29,11 +29,11 @@ public interface TaskMapper {
 
     //update task status
     @Update("UPDATE WTD_TASK SET completedYn=#{completedYn} WHERE task_id=#{task_id}")
-    int updateTaskCompletedYn(@Param("task_id") String task_id, @Param("completedYn") String completedYn);
+    int updateTaskCompletedYn(@Param("task_id") int task_id, @Param("completedYn") String completedYn);
 
     //update task status
     @Update("UPDATE WTD_TASK SET step=#{step} WHERE task_id=#{task_id}")
-    int updateTaskStep(@Param("task_id") String task_id, @Param("step") String step);
+    int updateTaskStep(@Param("task_id") int task_id, @Param("step") String step);
 
     //delete task
     @Delete("DELETE FROM WTD_TASK WHERE task_id=#{task_id}")

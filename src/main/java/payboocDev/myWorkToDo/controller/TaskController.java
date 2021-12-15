@@ -41,13 +41,13 @@ public class TaskController {
 
     //task status update
     @PutMapping("/update/completed")
-    public void updateTaskCompletedYn(@RequestParam("task_id") String task_id, @RequestParam("completedYn") String completedYn) {
+    public void updateTaskCompletedYn(@RequestParam("task_id") int task_id, @RequestParam("completedYn") String completedYn) {
         taskMapper.updateTaskCompletedYn(task_id, completedYn);
     }
 
     //task step update
     @PutMapping("/update/step")
-    public void updateTaskStep(@RequestParam("task_id") String task_id, @RequestParam("step") String step) {
+    public void updateTaskStep(@RequestParam("task_id") int task_id, @RequestParam("step") String step) {
         taskMapper.updateTaskStep(task_id, step);
     }
 

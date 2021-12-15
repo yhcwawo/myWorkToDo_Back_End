@@ -33,6 +33,9 @@ public class Task {
     private String daypost3;
     private String daypost4;
     private String name;
-
+    private int working_number;
+    private int complete_number;
+    private int todo_number;
+    private int stop_number;
 
 }

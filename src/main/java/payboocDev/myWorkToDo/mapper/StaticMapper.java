@@ -10,7 +10,10 @@ import java.util.List;
 @Mapper
 public interface StaticMapper {
 
-    @Select("SELECT * FROM WTD_TASK WHERE user_id=#{user_id}")
+    @Select("SELECT sum(if(step=\"처리중\",1,0)) as working_number, sum(if(step=\"완료\",1,0)) as complete_number,\n" +
+            "sum(if(step=\"해야할일\",1,0)) as todo_number, sum(if(step=\"보류\",1,0)) as stop_number\n" +
+            "FROM wtd_task\n" +
+            "where user_id = #{user_id}")
     Task getTaskSummary(@Param("user_id") int user_id);
 
     @Select(
