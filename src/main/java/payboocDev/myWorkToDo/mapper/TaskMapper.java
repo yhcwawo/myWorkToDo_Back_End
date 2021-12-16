@@ -17,6 +17,7 @@ public interface TaskMapper {
     //task list info
     @Select("SELECT task_id, task_name, task_to_date, date_format(created_date, '%Y-%m-%d')as created_date, user_id, step, task_index " +
             ",(select name from wtd_user where user_id = WTD_TASK.user_id ) as user_name\n" +
+            ",(select email from wtd_user where user_id = WTD_TASK.user_id ) as email\n" +
             ", work_id, completedYn FROM WTD_TASK WHERE work_id=#{work_id}")
     List<Task> getTaskList(@Param("work_id") int work_id);
 
