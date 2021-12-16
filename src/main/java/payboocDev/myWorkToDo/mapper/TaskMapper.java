@@ -10,7 +10,7 @@ import java.util.List;
 public interface TaskMapper {
 
     //task info
-    @Select("SELECT task_id, task_name, user_id, step, task_index, (select name from wtd_user where user_id = WTD_TASK.user_id ) as user_name, completedYn FROM WTD_TASK \n"+
+    @Select("SELECT task_id, task_name, user_id, step, task_index, (select name from wtd_user where user_id = WTD_TASK.user_id ) as user_name, (select email from wtd_user where user_id = WTD_TASK.user_id ) as email , completedYn FROM WTD_TASK \n"+
             "where task_id = (select max(task_id) from wtd_task) ")
     Task getTaskInfo();
 
